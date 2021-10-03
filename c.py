@@ -14,3 +14,7 @@ for i in test_list:
   
 # Printing length of list 
 print ("Length of list using naive method is : " + str(counter))
+
+a = 10
+b = 20
+print(a*b)

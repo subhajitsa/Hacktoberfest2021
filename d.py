@@ -9,3 +9,11 @@ def maximum(a, b):
 a = 2
 b = 4
 print(maximum(a, b))
+
+
+a =10
+b = 20
+c = 39
+
+sum = a*b*c
+print(sum**2)

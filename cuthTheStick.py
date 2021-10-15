@@ -7,68 +7,55 @@ import re
 import sys
 
 
-#
-# Complete the 'circularArrayRotation' function below.
+
+# Complete the 'cutTheSticks' function below.
 #
 # The function is expected to return an INTEGER_ARRAY.
-# The function accepts following parameters:
-#  1. INTEGER_ARRAY a
-#  2. INTEGER k
-#  3. INTEGER_ARRAY queries
+# The function accepts INTEGER_ARRAY arr as parameter.
 #
 
-def circularArrayRotation(a, k, queries):
-    # index = {}
-    # for i in range(len(a)):
-    #     index[i] = a[i]
+def getMin(arr):
+    minE = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] < minE:
+            minE = arr[i]
+    # print(minE)
+    return minE
 
-    currentPos = 0
-    for i in range(k):
-        currentPos += 1
-        if currentPos == k + 1:
-            currentPos = 0
 
-    FirstIndexIncrement = currentPos
-    # print("Current Pos", currentPos)
-    # print("currentPos: ", currentPos)
-    print(queries)
-    for i in range(len(queries)):
+def cutTheSticks(arr):
+    i, j = 0, 0
+    res = []
+    lenA1 = len(arr)
+    while lenA1 != 0:
+        lenA = len(arr)
+        print(len(arr))
+        # res.append(len(arr))
+        small = getMin(arr)
+        j = 0
+        while j < lenA:
+            if arr[j] == small:
+                arr.pop(j)
+            else:
+                arr[j] -= small
+                j += 1
+            lenA = len(arr)
+        # break
+        lenA1 = len(arr)
+        # print(arr)
 
-        if  FirstIndexIncrement - queries[i]   < 0:
-            # print("inside if")
-            newIndex =  (len(a)-1) - (queries[i] + FirstIndexIncrement )
-        else:
-            # print("inside else")
-            newIndex =   queries[i] - FirstIndexIncrement
-
-        # print("NewIndex = ", newIndex)
-
-        print(a[newIndex])
+        # break
+    # return res
 
 
 if __name__ == '__main__':
-    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    first_multiple_input = input().rstrip().split()
+    n = 6
 
-    n = int(first_multiple_input[0])
+    arr = [5, 4, 4, 2, 2, 8]
 
-    k = int(first_multiple_input[1])
+    result = cutTheSticks(arr)
 
-    q = int(first_multiple_input[2])
+    print(result)
 
-    a = list(map(int, input().rstrip().split()))
 
-    queries = []
-
-    for _ in range(q):
-        queries_item = int(input().strip())
-        queries.append(queries_item)
-
-    result = circularArrayRotation(a, k, queries)
-    # print(result)
-
-    # fptr.write('\n'.join(map(str, result)))
-    # fptr.write('\n')
-
-    # fptr.close()

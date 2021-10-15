@@ -7,7 +7,7 @@ import re
 import sys
 
 
-#
+
 # Complete the 'cutTheSticks' function below.
 #
 # The function is expected to return an INTEGER_ARRAY.
@@ -57,3 +57,5 @@ if __name__ == '__main__':
     result = cutTheSticks(arr)
 
     print(result)
+
+
